@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Variables*/
+:root{
+    --color-principal: #070707;
+    --color-secundario: #0f0f0f;
+    --color-secundario-claro: #181818;
+    --color-terciario: #DB202C;
+    --color-terciario-claro: #A33736;
+    --color-texto: #F2F2F2;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-principal);
+}
+
+main {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "nav principal"
+    ;
+
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/*Header*/
+header{
+    grid-area: header;
+    color: var(--color-terciario);
+}
+
+header h3{
+    color: var(--color-texto);
+}
+
+
+/*Panel izquierdo*/
+#panel-izquierda{
+    grid-area: nav;
+    overflow-y: auto;
+    background-color: var(--color-secundario-claro);
+}
+
+.link{
+    display: block;
+    padding: 0.5rem;
+    color: var(--color-texto);
+    text-decoration: none;
+}
+
+.link:hover{
+    text-decoration: underline;
+}
+
+/*Principal*/
+#principal{
+    grid-area: principal;
+    overflow-y: auto;
+    height: 100%;
+    background-color: var(--color-secundario);
+}
+
+/*HACER BOTONES Y ARREGLARLOS*/
+.botones-pagina{
+    display: flex;
+    justify-content: space-between;
+}
+
+.botones-pagina button{
+    background-color: var(--color-principal);
+    color: var(--color-texto);
+    border-radius: 5px;
+    padding: 0.3rem;
+    border: 1px solid var(--color-texto);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.botones-pagina button:disabled{
+    cursor: default;
+    opacity: 0.5;
+}
+
+/*Carta*/
+#cartas, #cartas-favoritas{
+    /*height: 100%;*/
+    display: grid;
+    color: var(--color-texto);
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    justify-items: center;
+}
+
+.magic-card{
+    background-color: var(--color-secundario-claro);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    height: fit-content;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 250px; 
+    width: 100%;
+    margin: 0;
+}
+
+.magic-card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;  /* Mantiene la proporción de la imagen */
+}
+
+
+@media (min-width: 550px){
+    #cartas, #cartas-favoritas{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px){
+    #cartas, #cartas-favoritas{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
